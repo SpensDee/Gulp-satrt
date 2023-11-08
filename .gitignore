@@ -1,0 +1,14 @@
+/dist
+/node_modules
+package-lock.json
+
+# macOS system files
+.DS_Store
+
+# macOS folder metadata
+.AppleDouble
+._*
+
+# Thumbnails
+._.Trashes
+

@@ -1,0 +1,146 @@
+.x-burger {
+  --BURGER_WIDTH: 31px;
+  --BURGER_HEIGHT: 26px;
+  --BURGER_LINE_COLOR: var(--secondary-color);
+  --BURGER_LINE_WEIGHT: 2px;
+  --BURGER_LINE_RADIUS: 3px;
+
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: var(--BURGER_WIDTH);
+  height: var(--BURGER_HEIGHT);
+  transition: opacity 0.3s;
+  will-change: opacity;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    transform-origin: center;
+  }
+
+  &::before,
+  &::after,
+  & span {
+    width: inherit;
+    height: var(--BURGER_LINE_WEIGHT);
+    background-color: var(--BURGER_LINE_COLOR);
+    border-radius: var(--BURGER_LINE_RADIUS);
+    will-change: opacity, transform;
+  }
+
+  &::before {
+    animation: BURGER_ANIMATION_TOP_LINE_CLOSE 0.4s forwards;
+  }
+
+  &::after {
+    animation: BURGER_ANIMATION_LAST_LINE_CLOSE 0.4s forwards;
+  }
+
+  & span {
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  & input {
+    height: 1px;
+    width: 1px;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+  }
+
+  &.is-Active {
+    & span {
+      opacity: 0;
+    }
+
+    &::before {
+      animation: BURGER_ANIMATION_TOP_LINE_OPEN 0.5s forwards;
+    }
+
+    &::after {
+      animation: BURGER_ANIMATION_LAST_LINE_OPEN 0.5s forwards;
+    }
+  }
+}
+
+@keyframes BURGER_ANIMATION_TOP_LINE_OPEN {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(
+        calc((var(--BURGER_HEIGHT) - var(--BURGER_LINE_WEIGHT)) / 2)
+      )
+      rotate(0);
+  }
+  100% {
+    transform: translateY(
+        calc((var(--BURGER_HEIGHT) - var(--BURGER_LINE_WEIGHT)) / 2)
+      )
+      rotate(45deg);
+  }
+}
+
+@keyframes BURGER_ANIMATION_LAST_LINE_OPEN {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(
+        calc(-1 * ((var(--BURGER_HEIGHT) - var(--BURGER_LINE_WEIGHT)) / 2))
+      )
+      rotate(0);
+  }
+  100% {
+    transform: translateY(
+        calc(-1 * ((var(--BURGER_HEIGHT) - var(--BURGER_LINE_WEIGHT)) / 2))
+      )
+      rotate(-45deg);
+  }
+}
+
+@keyframes BURGER_ANIMATION_TOP_LINE_CLOSE {
+  0% {
+    transform: translateY(
+        calc((var(--BURGER_HEIGHT) + var(--BURGER_LINE_WEIGHT)) / 2)
+      )
+      rotate(45deg);
+  }
+  50% {
+    transform: translateY(
+        calc((var(--BURGER_HEIGHT) + var(--BURGER_LINE_WEIGHT)) / 2)
+      )
+      rotate(0);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes BURGER_ANIMATION_LAST_LINE_CLOSE {
+  0% {
+    transform: translateY(
+        calc(-1 * ((var(--BURGER_HEIGHT) + var(--BURGER_LINE_WEIGHT)) / 2))
+      )
+      rotate(-45deg);
+  }
+  50% {
+    transform: translateY(
+        calc(-1 * ((var(--BURGER_HEIGHT) + var(--BURGER_LINE_WEIGHT)) / 2))
+      )
+      rotate(0);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}

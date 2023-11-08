@@ -1,0 +1,132 @@
+html {
+  // scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: sans-serif;
+  color: var(--main-color);
+  background-color: #f2f2f4;
+  font: normal 300 20px/1.3 "Inter Tight", sans-serif;
+
+  @include lg() {
+    font-size: 16px;
+  }
+
+  @include sm() {
+    font-size: 14px;
+  }
+}
+
+main {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.header,
+.footer,
+.page__section {
+  max-width: 1780px;
+  margin-inline: auto;
+
+  @media (max-width: 1820px) {
+    padding-inline: 20px;
+  }
+}
+
+.page__section {
+  padding-bottom: 180px;
+
+  &:first-child {
+    padding-top: 125px;
+  }
+
+  @include lg() {
+    padding-bottom: 150px;
+    &:first-child {
+      padding-top: 100px;
+    }
+
+    &:last-child() {
+      padding-bottom: 93px;
+    }
+  }
+
+  @include sm() {
+    padding-bottom: 110px;
+
+    &:first-child {
+      padding-top: 56px;
+    }
+  }
+
+  @include mob() {
+    padding-inline: 15px;
+  }
+}
+
+.btn {
+  background-color: var(--accent-color);
+  border-radius: 8px;
+  padding-block: 30px;
+  color: white;
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 82.5%;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+  max-height: 101px;
+
+  @include xl() {
+    font-size: 28px;
+    padding-block: 23px 28px;
+    max-height: 74px;
+  }
+
+  @include sm() {
+    font-size: 18px !important;
+    padding-block: 24px 27px !important;
+    max-height: 66px !important;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+.title {
+  color: var(--main-color);
+  font-weight: 500;
+  line-height: 0.85;
+  font-size: 82px;
+  margin-bottom: 75px;
+
+  @include lg() {
+    margin-bottom: 50px;
+    font-size: 60px;
+  }
+
+  @include sm() {
+    margin-bottom: 46px;
+    font-size: 35px;
+  }
+
+  &--xl {
+    // font-size: 149px;
+    font-size: 7.7vw;
+    letter-spacing: -2.98px;
+    line-height: 1;
+    margin-bottom: 0;
+
+    @include sm() {
+      font-size: 46px;
+      line-height: 1.2;
+    }
+  }
+}
